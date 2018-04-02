@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix'=>'admin'], function(){
+    Route::get('home',[
+        'uses' => 'Ad_HomeController@getAdminIndex',
+        'as' => 'home'
+    ]);
+    //Category List
+    Route::get('category-list',[
+        'uses' => 'Ad_CategoryController@getCategoryList',
+        'as' => 'cateList'
+    ]);
+    //Edit Category
+    Route::get('edit-category',[
+        'uses' => 'Ad_CategoryController@getEditCategory',
+        'as' => 'editCate'
+    ]);
+
 });
+

@@ -22,8 +22,9 @@ class CreateProductsTable extends Migration
             $table->string('promotion_item')->nullable();
             $table->text('summary')->nullable();
             $table->longText('detail')->nullable();
-            $table->string('tags')->nullable();
             $table->tinyInteger('today');
+            $table->string('seo_keywords')->nullable();
+            $table->string('seo_description')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('cate_id')->unsigned();
