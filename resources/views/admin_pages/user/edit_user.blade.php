@@ -7,10 +7,10 @@
     <link href="admin/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 @endsection
 @section('title')
-    Edit Product
+    Edit Employee
 @endsection
 @section('breadcrumbs')
-    {{Breadcrumbs::render('edit_product')}}
+    {{Breadcrumbs::render('edit_user')}}
 @endsection
 @section('content')
     <div class="row">
@@ -25,7 +25,7 @@
                         </p>
                     </div>
                     <div class="col-sm-12 col-md-1">
-                        <a href="{{route('addPro')}}"><button type="button" class="btn btn-success waves-effect waves-light float-right">Add <i class="mdi mdi-plus-circle-outline"></i></button></a>
+                        <a href="#"><button type="button" class="btn btn-success waves-effect waves-light float-right">Add <i class="mdi mdi-plus-circle-outline"></i></button></a>
                     </div>
                 </div>
                 <div class="clearfix"></div>

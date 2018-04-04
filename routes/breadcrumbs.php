@@ -19,9 +19,9 @@ Breadcrumbs::register('product_list', function ($breadcrumbs){
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Product List', route('proList'));
 });
-//Home > List Product > Add Product
+//Home > Edit Product > Add Product
 Breadcrumbs::register('add_product', function ($breadcrumbs){
-    $breadcrumbs->parent('product_list');
+    $breadcrumbs->parent('edit_product');
     $breadcrumbs->push('Add Product', route('addPro'));
 });
 //Home > Edit Product
@@ -29,4 +29,26 @@ Breadcrumbs::register('edit_product', function ($breadcrumbs){
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Edit Product', route('editPro'));
 });
+//Home > List Customer
+Breadcrumbs::register('customer_list', function ($breadcrumbs){
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Customer List', route('cusList'));
+});
+//Home > Edit Customer
+Breadcrumbs::register('edit_customer', function ($breadcrumbs){
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Edit Customer', route('editCus'));
+});
+//Home > List User
+Breadcrumbs::register('user_list', function ($breadcrumbs){
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Employee List', route('userList'));
+});
+//Home > Edit User
+Breadcrumbs::register('edit_user', function ($breadcrumbs){
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Edit Employee', route('editUser'));
+});
+
+
 ?>

@@ -7,10 +7,10 @@
     <link href="admin/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 @endsection
 @section('title')
-    Product List
+    Employee List
 @endsection
 @section('breadcrumbs')
-    {{Breadcrumbs::render('product_list')}}
+    {{Breadcrumbs::render('user_list')}}
 @endsection
 @section('content')
     <div class="row">

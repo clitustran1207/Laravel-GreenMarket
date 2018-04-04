@@ -41,6 +41,26 @@ Route::group(['prefix'=>'admin'], function(){
         'uses' => 'Ad_ProductController@getEditProduct',
         'as' => 'editPro'
     ]);
+    //Customer List
+    Route::get('customer-list',[
+        'uses' => 'Ad_CustomerController@getCustomerList',
+        'as' => 'cusList'
+    ]);
+    //Edit Customer
+    Route::get('edit-customer',[
+        'uses' => 'Ad_CustomerController@getEditCustomer',
+        'as' => 'editCus'
+    ]);
+    //User List
+    Route::get('user-list',[
+        'uses' => 'Ad_UserController@getUserList',
+        'as' => 'userList'
+    ]);
+    //Edit User
+    Route::get('edit-user',[
+        'uses' => 'Ad_UserController@getEditUser',
+        'as' => 'editUser' 
+    ]);
 
 });
 

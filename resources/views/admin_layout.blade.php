@@ -167,38 +167,18 @@
                             </li>
 
                             <li>
-                                <a href="tickets.html"><i class="fi-help"></i><span class="badge badge-danger pull-right">New</span> <span> Tickets </span></a>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);"><i class="fi-box"></i><span> Icons </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="fi-box"></i><span> Customer </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="icons-colored.html">Colored Icons</a></li>
-                                    <li><a href="icons-materialdesign.html">Material Design</a></li>
-                                    <li><a href="icons-dripicons.html">Dripicons</a></li>
-                                    <li><a href="icons-fontawesome.html">Font awesome</a></li>
-                                    <li><a href="icons-feather.html">Feather Icons</a></li>
-                                    <li><a href="icons-simple-line.html">Simple line Icons</a></li>
-                                    <li><a href="icons-flags.html">Flag Icons</a></li>
-                                    <li><a href="icons-file.html">File Icons</a></li>
-                                    <li><a href="icons-pe7.html">PE7 Icons</a></li>
-                                    <li><a href="icons-typicons.html">Typicons</a></li>
+                                    <li><a href="{{route('cusList')}}">Customer List</a></li>
+                                    <li><a href="{{route('editCus')}}">Edit Customer</a></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Graphs </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Employee </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="chart-flot.html">Flot Chart</a></li>
-                                    <li><a href="chart-morris.html">Morris Chart</a></li>
-                                    <li><a href="chart-google.html">Google Chart</a></li>
-                                    <li><a href="chart-echart.html">Echarts</a></li>
-                                    <li><a href="chart-chartist.html">Chartist Charts</a></li>
-                                    <li><a href="chart-chartjs.html">Chartjs Chart</a></li>
-                                    <li><a href="chart-c3.html">C3 Chart</a></li>
-                                    <li><a href="chart-justgage.html">Justgage Charts</a></li>
-                                    <li><a href="chart-sparkline.html">Sparkline Chart</a></li>
-                                    <li><a href="chart-knob.html">Jquery Knob</a></li>
+                                    <li><a href="{{route('userList')}}">Employee List</a></li>
+                                    <li><a href="{{route('editUser')}}">Edit Employee</a></li>
                                 </ul>
                             </li>
 

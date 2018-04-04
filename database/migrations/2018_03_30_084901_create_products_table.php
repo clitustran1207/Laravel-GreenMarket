@@ -17,6 +17,8 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('alias');
+            $table->integer('quantity');
+            $table->string('status');
             $table->double('price')->nullable();
             $table->double('promotion_price')->nullable();
             $table->string('promotion_item')->nullable();
