@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <table class="table table-colored-bordered table-bordered-danger table-striped add-edit-table" id="datatable-editable">
+                <table class="table table-colored table-primary table-hover add-edit-table" id="datatable-editable">
                     <thead>
                     <tr>
                         <th>Rendering engine</th>

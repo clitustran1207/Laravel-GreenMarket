@@ -26,6 +26,21 @@ Route::group(['prefix'=>'admin'], function(){
         'uses' => 'Ad_CategoryController@getEditCategory',
         'as' => 'editCate'
     ]);
+    //Product List
+    Route::get('product-list',[
+        'uses' => 'Ad_ProductController@getProductList',
+        'as' => 'proList'
+    ]);
+    //Add Product
+    Route::get('add-product',[
+        'uses' => 'Ad_ProductController@getAddProduct',
+        'as' => 'addPro'
+    ]);
+    //Edit Product
+    Route::get('edit-product',[
+        'uses' => 'Ad_ProductController@getEditProduct',
+        'as' => 'editPro'
+    ]);
 
 });
 

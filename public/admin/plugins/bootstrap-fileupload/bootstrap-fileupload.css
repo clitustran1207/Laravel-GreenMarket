@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   vertical-align: middle;
-}
+} 
 
 .btn-file > input {
   position: absolute;
@@ -15,7 +15,7 @@
   filter: alpha(opacity=0);
   transform: translate(-300px, 0) scale(4);
   direction: ltr;
-}
+} 
 
 .fileupload {
   margin-bottom: 9px;
