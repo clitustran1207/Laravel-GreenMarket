@@ -10,7 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('admin-login',[
+    'uses'=>'AccessController@getAdminLogin',
+    'as'=>'adminLogin'
+]);
+Route::get('admin-logout',[
+    'uses'=>'AccessController@getAdminLogout',
+    'as'=>'adminLogout'
+]);
+Route::get('admin-register',[
+    'uses'=>'AccessController@getAdminRegister',
+    'as'=>'adminRegister'
+]);
+Route::post('admin-register',[
+    'uses'=>'AccessController@postAdminRegister',
+    'as'=>'adminRegister'
+]);
 Route::group(['prefix'=>'admin'], function(){
     Route::get('home',[
         'uses' => 'Ad_HomeController@getAdminIndex',
@@ -60,6 +75,16 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('edit-user',[
         'uses' => 'Ad_UserController@getEditUser',
         'as' => 'editUser' 
+    ]);
+    //Order List
+    Route::get('order-list',[
+        'uses' => 'Ad_OrderController@getOrderList',
+        'as' => 'orderList' 
+    ]);
+    //Order Detail
+    Route::get('order-detail',[
+        'uses' => 'Ad_OrderController@getOrderDetail',
+        'as' => 'orderDetail' 
     ]);
 
 });

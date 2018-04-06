@@ -49,6 +49,15 @@ Breadcrumbs::register('edit_user', function ($breadcrumbs){
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Edit Employee', route('editUser'));
 });
-
+//Home > Order List
+Breadcrumbs::register('order_list', function ($breadcrumbs){
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Order List', route('orderList'));
+});
+//Home > Order List > Order Detail
+Breadcrumbs::register('order_detail', function ($breadcrumbs){
+    $breadcrumbs->parent('order_list');
+    $breadcrumbs->push('Order Detail', route('orderDetail'));
+});
 
 ?>

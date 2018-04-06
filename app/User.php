@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'fullname', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function setFullnameAttribute($value){
+        $this->attributes['fullname'] = ucfirst($value);
+    }
+    public function setBirthdayAttribute($value){
+        $this->attributes['birthday'] = date('Y-m-d', strtotime($value));
+    }
 }

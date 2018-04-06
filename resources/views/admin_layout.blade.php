@@ -157,7 +157,6 @@
                                     <li><a href="{{route('editCate')}}">Edit Category</a></li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Product </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
@@ -165,7 +164,6 @@
                                     <li><a href="{{route('editPro')}}">Edit Product</a></li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-box"></i><span> Customer </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
@@ -173,7 +171,6 @@
                                     <li><a href="{{route('editCus')}}">Edit Customer</a></li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Employee </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
@@ -181,11 +178,10 @@
                                     <li><a href="{{route('editUser')}}">Edit Employee</a></li>
                                 </ul>
                             </li>
-
                             <li>
-                                <a href="javascript: void(0);"><i class="fi-mail"></i><span> Email </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="fi-mail"></i><span> Order </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="email-inbox.html">Inbox</a></li>
+                                    <li><a href="{{route('orderList')}}">Order List</a></li>
                                     <li><a href="email-read.html">Read Email</a></li>
                                     <li><a href="email-compose.html">Compose Email</a></li>
                                 </ul>
