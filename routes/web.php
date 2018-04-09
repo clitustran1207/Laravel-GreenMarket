@@ -1,33 +1,29 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::get('admin-login',[
-    'uses'=>'AccessController@getAdminLogin',
+    'uses'=>'LoginController@getAdminLogin',
     'as'=>'adminLogin'
 ]);
-Route::get('admin-logout',[
-    'uses'=>'AccessController@getAdminLogout',
-    'as'=>'adminLogout'
+Route::post('admin-login',[
+    'uses'=>'LoginController@postAdminLogin',
+    'as'=>'adminLogin'
 ]);
 Route::get('admin-register',[
-    'uses'=>'AccessController@getAdminRegister',
+    'uses'=>'RegisterController@getAdminRegister',
     'as'=>'adminRegister'
 ]);
 Route::post('admin-register',[
-    'uses'=>'AccessController@postAdminRegister',
+    'uses'=>'RegisterController@postAdminRegister',
     'as'=>'adminRegister'
 ]);
-Route::group(['prefix'=>'admin'], function(){
-    Route::get('home',[
+Route::get('admin-logout',[
+    'uses'=>'LoginController@getAdminLogout',
+    'as'=>'adminLogout'
+]);
+Route::get('activate/{email}/{activationCode}','ActivationController@activate');
+
+Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
+    Route::get('/',[
         'uses' => 'Ad_HomeController@getAdminIndex',
         'as' => 'home'
     ]);

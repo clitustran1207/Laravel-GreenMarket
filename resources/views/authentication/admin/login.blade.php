@@ -1,4 +1,4 @@
-@extends('access.ad_layout')
+@extends('authentication.ad_layout')
 @section('content')
     <div class="account-logo-box">
         <h2 class="text-uppercase text-center">
@@ -10,19 +10,19 @@
         <p class="m-b-0">Login to your Admin account</p>
     </div>
     <div class="account-content">
-        <form class="form-horizontal" action="#" method="POST">
+        <form class="form-horizontal" method="POST">
             {{csrf_field()}}
             <div class="form-group m-b-20 row">
                 <div class="col-12">
-                    <label for="emailaddress">Email address</label>
-                    <input class="form-control" type="email" id="inputEmail" name="email" placeholder="john@deo.com" required>
+                    <label for="email">Email address</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="john@deo.com" required autofocus>
                 </div>
             </div>
             <div class="form-group row m-b-20">
                 <div class="col-12">
-                    <a href="page-recoverpw.html" class="text-muted pull-right"><small>Forgot your password?</small></a>
+                    <a href="#" class="text-muted pull-right"><small>Forgot your password?</small></a>
                     <label for="password">Password</label>
-                    <input class="form-control" type="password" id="password" name="inputPassword" placeholder="Enter your password" required>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
             </div>
             <div class="form-group row m-b-20">

@@ -62,13 +62,31 @@
             @if(Session::has('flash_message'))
                 var type = "{{Session::get('flash_level')}}";
                 var mess = "{{Session::get('flash_message')}}";
-                //console.log(type)
+                switch(type){
+                    case 'success':
+                        var head = "Well done!";
+                        var color = "#5ba035";
+                        break;
+                    case 'warning':
+                        var head = "Holy guacamole!";
+                        var color = "#da8609";
+                        break;
+                    case 'error':
+                        var head = "Oh snap!";
+                        var color = "#bf441d";
+                        break;
+                    default:
+                        var head = "Heads up!";
+                        var color = "#3b98b5";
+                        break;
+                }
+                // console.log(type)
                 $(document).ready(function(){
                     $.toast({
-                        heading: 'Well done!',
+                        heading: head,
                         text: mess,
                         position: 'top-right',
-                        loaderBg: '#5ba035',
+                        loaderBg: color,
                         icon: type,
                         hideAfter: 3000,
                         stack: 1

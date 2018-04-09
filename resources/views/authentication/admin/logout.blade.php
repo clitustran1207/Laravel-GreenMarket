@@ -1,4 +1,4 @@
-@extends('access.ad_layout')
+@extends('authentication.ad_layout')
 @section('content')
     <div class="text-center account-logo-box">
         <h2 class="text-uppercase">

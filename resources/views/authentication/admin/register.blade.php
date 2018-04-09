@@ -1,4 +1,4 @@
-@extends('access.ad_layout')
+@extends('authentication.ad_layout')
 @section('css')
     <!-- Plugins css -->
     <link href="admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
@@ -18,12 +18,12 @@
         <p class="m-b-0">Get access to our admin panel</p>
     </div>
     <div class="account-content">
-        <form class="form-horizontal" action="#" method="POST">
+        <form class="form-horizontal" method="POST">
             {{csrf_field()}}
             <div class="form-group row m-b-20">
                 <div class="col-12">
-                    <label for="username">Full Name</label>
-                    <input class="form-control" type="text" name="fullname" required="" placeholder="Michael Zenaty">
+                    <label for="firstname">First Name</label>
+                    <input class="form-control" type="text" name="first_name" placeholder="Michael Zenaty" required>
                 </div>
             </div>
             <div class="form-group row m-b-20">

@@ -10,7 +10,8 @@
         <base href="{{asset('')}}">
         <!-- App favicon -->
         <link rel="shortcut icon" href="admin/assets/images/favicon.ico">
-
+        <!-- Toastr css -->
+        <link href="admin/plugins/jquery-toastr/jquery.toast.min.css" rel="stylesheet" />
         <!-- App css -->
         <link href="admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="admin/assets/css/icons.css" rel="stylesheet" type="text/css" />
@@ -90,7 +91,7 @@
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                                 <!-- item-->
                                 <div class="dropdown-item noti-title">
-                                    <h5 class="text-overflow"><small>Welcome ! John</small> </h5>
+                                    <h5 class="text-overflow"><b>Hi, {{Sentinel::getUser()->first_name}}</b> </h5>
                                 </div>
 
                                 <!-- item-->
@@ -109,7 +110,7 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="{{route('adminLogout')}}" class="dropdown-item notify-item">
                                     <i class="zmdi zmdi-power"></i> <span>Logout</span>
                                 </a>
 
@@ -346,7 +347,44 @@
         <!-- App js -->
         <script src="admin/assets/js/jquery.core.js"></script>
         <script src="admin/assets/js/jquery.app.js"></script>
-
+        <!-- Toastr js -->
+        <script src="admin/plugins/jquery-toastr/jquery.toast.min.js" type="text/javascript"></script>
+        <script>
+            @if(Session::has('flash_message'))
+                var type = "{{Session::get('flash_level')}}";
+                var mess = "{{Session::get('flash_message')}}";
+                switch(type){
+                    case 'success':
+                        var head = "Well done!";
+                        var color = "#5ba035";
+                        break;
+                    case 'warning':
+                        var head = "Holy guacamole!";
+                        var color = "#da8609";
+                        break;
+                    case 'error':
+                        var head = "Oh snap!";
+                        var color = "#bf441d";
+                        break;
+                    default:
+                        var head = "Heads up!";
+                        var color = "#3b98b5";
+                        break;
+                }
+                // console.log(type)
+                $(document).ready(function(){
+                    $.toast({
+                        heading: head,
+                        text: mess,
+                        position: 'top-right',
+                        loaderBg: color,
+                        icon: type,
+                        hideAfter: 3000,
+                        stack: 1
+                    });
+                });
+            @endif
+        </script>
         @yield('js')
 
     </body>
