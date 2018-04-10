@@ -20,12 +20,12 @@ class LoginController extends Controller
             if(Sentinel::authenticate($req->all(), $rememberMe))
                 return redirect()->route('home')->with(['flash_level'=>'success','flash_message'=>'Welcome back, '.Sentinel::getUser()->first_name.'.']); 
             else
-                return redirect()->back()->with(['error' => 'Wrong credentials.']);
+                return redirect()->back()->with(['flash_level'=>'error','flash_message'=>'Wrong credentials.']);
         } catch (ThrottlingException $e) {
             $delay = $e->getDelay();
-            return redirect()->back()->with(['error' => "You are banned for $delay seconds."]);
+            return redirect()->back()->with(['flash_level'=>'error','flash_message'=>"You are banned for $delay seconds."]);
         } catch (NotActivatedException $e) {
-            return redirect()->back()->with(['error' => "Your account is not activated."]);
+            return redirect()->back()->with(['flash_level'=>'error','flash_message'=>'Your account is not activated.']);
         }
     }
     public function getAdminLogout(){
