@@ -47,7 +47,7 @@
             <p class="text-muted font-13 m-t-10"> An activation code has been send to <b>{{$email}}</b>.
                 Please check for an email from company and click on the included link to
                 activate your account. </p>
-            <a href="https://gmail.com" class="btn btn-md btn-block btn-primary waves-effect waves-light m-t-30">Go to your inbox</a>
+            <a href="{{route('adminLogin')}}" class="btn btn-md btn-block btn-primary waves-effect waves-light m-t-30">Go to your inbox</a>
         </div>
 
     </div>

@@ -30,6 +30,15 @@
                         <div class="wrapper-page">
                             <div class="account-pages">
                                 <div class="account-box">
+                                    @if(Session::has('error'))
+                                        <div class="alert alert-icon alert-danger alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <i class="mdi mdi-block-helper"></i>
+                                            <strong>{{Session::get('error')}}</strong>
+                                        </div>
+                                    @endif
                                     @yield('content')
                                 </div>
                             </div>
@@ -88,7 +97,7 @@
                         position: 'top-right',
                         loaderBg: color,
                         icon: type,
-                        hideAfter: 3000,
+                        hideAfter: 5000,
                         stack: 1
                     });
                 });

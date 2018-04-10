@@ -379,7 +379,7 @@
                         position: 'top-right',
                         loaderBg: color,
                         icon: type,
-                        hideAfter: 3000,
+                        hideAfter: 5000,
                         stack: 1
                     });
                 });

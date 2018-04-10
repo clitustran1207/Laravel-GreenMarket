@@ -28,7 +28,7 @@
             <div class="form-group row m-b-20">
                 <div class="col-12">
                     <div class="checkbox checkbox-success">
-                        <input id="remember" type="checkbox" checked>
+                        <input id="remember" type="checkbox" name="remember_me">
                         <label for="remember">Remember me</label>
                     </div>
                 </div>
