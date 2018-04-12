@@ -4,15 +4,15 @@
 Breadcrumbs::register('home', function ($breadcrumbs){
     $breadcrumbs->push('Home', route('home'));
 }); 
-//Home > List Category
+//Home > Extract File
+Breadcrumbs::register('extractFileCategory', function ($breadcrumbs){
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Extract File Category', route('extractFileCate'));
+});
+//Home > Category List
 Breadcrumbs::register('category_list', function ($breadcrumbs){
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Category List', route('cateList'));
-});
-//Home > Edit Category
-Breadcrumbs::register('edit_category', function ($breadcrumbs){
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Edit Category', route('editCate'));
 });
 //Home > List Product
 Breadcrumbs::register('product_list', function ($breadcrumbs){

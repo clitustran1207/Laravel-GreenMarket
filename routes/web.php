@@ -27,15 +27,18 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
         'uses' => 'Ad_HomeController@getAdminIndex',
         'as' => 'home'
     ]);
+    //Extract file Category
+    Route::get('file-category',[
+        'uses' => 'Ad_CategoryController@getExtract',
+        'as' => 'extractFileCate'
+    ]);
     //Category List
     Route::get('category-list',[
         'uses' => 'Ad_CategoryController@getCategoryList',
         'as' => 'cateList'
     ]);
-    //Edit Category
-    Route::get('edit-category',[
-        'uses' => 'Ad_CategoryController@getEditCategory',
-        'as' => 'editCate'
+    Route::get('category-data',[
+        'uses' => 'Ad_CategoryController@getData'
     ]);
     //Product List
     Route::get('product-list',[

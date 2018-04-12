@@ -15,7 +15,7 @@ class RegisterController extends Controller
     public function postAdminRegister(Request $req){
         $user = Sentinel::register($req->all());
         $activation = Activation::create($user);
-        $role = Sentinel::findRoleBySlug('seller');
+        $role = Sentinel::findRoleBySlug('admin');
         $role->users()->attach($user); 
         $this->sendMail($user, $activation->code);
         return view('authentication.account.confirm-mail',['email' => $user->email]);

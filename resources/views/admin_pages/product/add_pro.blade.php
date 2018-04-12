@@ -13,7 +13,7 @@
 @endsection
 @section('content')    
     <div class="card-box">
-        <form method="POST" action="#" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
                     <div class="card-box">

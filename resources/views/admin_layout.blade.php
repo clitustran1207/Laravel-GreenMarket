@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="my-app">
     <head>
         <meta charset="utf-8" />
         <title>Adminox - Responsive Web App Kit</title>
@@ -155,7 +155,7 @@
                                 <a href="javascript: void(0);"><i class="fi-target"></i> <span> Category </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="{{route('cateList')}}">Category List</a></li>
-                                    <li><a href="{{route('editCate')}}">Edit Category</a></li>
+                                    <li><a href="{{route('extractFileCate')}}">Extract File</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -385,6 +385,9 @@
                 });
             @endif
         </script>
+        <!-- AngularJS -->
+        <script src="angular/assets/angular.min.js"></script>
+        <script src="angular/app.js"></script>
         @yield('js')
 
     </body>
