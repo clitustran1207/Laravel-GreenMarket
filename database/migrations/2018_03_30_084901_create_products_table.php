@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('alias');
             $table->integer('quantity');
             $table->string('status');
-            $table->double('price')->nullable();
-            $table->double('promotion_price')->nullable();
+            $table->string('price')->nullable();
+            $table->string('promotion_price')->nullable();
             $table->string('promotion_item')->nullable();
             $table->text('summary')->nullable();
             $table->longText('detail')->nullable();
@@ -29,8 +29,8 @@ class CreateProductsTable extends Migration
             $table->string('seo_description')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('cate_id')->unsigned();
-            $table->foreign('cate_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->integer('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('sub_categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

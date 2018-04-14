@@ -11,4 +11,8 @@ app.controller('Ad_CategoryController', function($scope,$http){
         // console.log(success);
         $scope.categories = success.data;
     }); 
+
+    $scope.modal= function(){
+        $("#myModal").modal('show');
+    }
 });

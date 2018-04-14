@@ -50,10 +50,18 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
         'uses' => 'Ad_ProductController@getAddProduct',
         'as' => 'addPro'
     ]);
-    //Edit Product
-    Route::get('edit-product',[
-        'uses' => 'Ad_ProductController@getEditProduct',
-        'as' => 'editPro'
+    Route::get('load-brand/{id}', 'Ad_ProductController@loadBrand');
+    // Route::post('loadBrand', 'Ad_ProductController@loadBrand');
+
+    Route::post('add-product',[
+        'uses' => 'Ad_ProductController@postAddProduct',
+        'as' => 'addPro'
+    ]);
+
+    //Extract file Product
+    Route::get('file-product',[
+        'uses' => 'Ad_ProductController@getExtract',
+        'as' => 'extractFilePro'
     ]);
     //Customer List
     Route::get('customer-list',[

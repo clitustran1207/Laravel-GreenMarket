@@ -13,45 +13,84 @@
 @endsection
 @section('content')    
     <div class="card-box">
-        <form method="POST" enctype="multipart/form-data">
+        <form action="{{route('addPro')}}" method="POST" enctype="multipart/form-data">
+            {{csrf_field()}}
             <div class="row">
                 <div class="col-md-6">
                     <div class="card-box">
-                        <div class="form-group">
-                            <label for="category">Category</label>
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <select class="form-control" name="category" id="category" required>
+                                        <option value="">--None--</option>
+                                        @foreach($category as $cate)
+                                            <option value="{{$cate->id}}">{{$cate->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="category">Brand</label>
+                                    <select class="form-control" name="brand" id="brand">
+                                        <option value="">--Select Category first--</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
+                            <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
                         </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="text" placeholder="" data-a-sign="$ " class="form-control autonumber" required>
-                            <span class="font-14 text-muted">e.g. "$ 1,234,567,890,123"</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="promotion_price">Promotion Price</label>
-                            <input type="text" placeholder="" data-a-sign="$ " class="form-control autonumber">
-                            <span class="font-14 text-muted">e.g. "$ 1,234,567,890,123"</span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" placeholder="Enter Price" name="price" data-a-sign="$ " class="form-control autonumber" required>
+                                    <span class="font-14 text-muted">e.g. "$ 1,234,567,890,123"</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="promotion_price">Promotion Price</label>
+                                    <input type="text" placeholder="Enter Promotion Price" name="promotion_price" data-a-sign="$ " class="form-control autonumber">
+                                    <span class="font-14 text-muted">e.g. "$ 1,234,567,890,123"</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="promotion_item">Promotion Item</label>
-                            <input type="text" class="form-control" id="promotion_item" placeholder="Enter Promotion Item">
+                            <input type="text" class="form-control" id="promotion_item" name="promotion_item" placeholder="Enter Promotion Item">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Quantity</label>
+                                    <input type="text" class="form-control" name="quantity" placeholder="Enter Quantity" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p style="font-size: 14px;color: #313a46;letter-spacing: 0.01em;font-family:Nunito Sans;">Status</p>
+                                    <div class="radio radio-success form-check-inline">
+                                        <input type="radio" id="inlineRadio1" value="1" name="status" checked>
+                                        <label for="inlineRadio1"> Đang kinh doanh </label>
+                                    </div>
+                                    <div class="radio radio-danger form-check-inline">
+                                        <input type="radio" id="inlineRadio2" value="0" name="status">
+                                        <label for="inlineRadio2"> Ngừng kinh doanh </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="summary">Summary</label>
-                            <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="The Summary content has a limit of 225 chars." required></textarea>
+                            <textarea id="textarea" name="summary" class="form-control" maxlength="225" rows="3" placeholder="The Summary content has a limit of 225 chars." required></textarea>
                         </div>
                         <div class="form-group" style="margin: 0">
                             <div class="checkbox checkbox-primary">
-                                <input id="checkbox1" type="checkbox">
+                                <input id="checkbox1" type="checkbox" name="today" value="1">
                                 <label for="checkbox1">Today Deal</label>
                             </div>
                         </div>
@@ -61,33 +100,29 @@
                     <div class="card-box">
                         <div class="form-group">
                             <label for="seo_keyword">SEO Keywords</label>
-                            <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="The SEO keywords content has a limit of 225 chars." required></textarea>
+                            <textarea id="textarea" name="seo_keywords" class="form-control" maxlength="225" rows="3" placeholder="The SEO keywords content has a limit of 225 chars." required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="seo_description">SEO Description</label>
-                            <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="The SEO description content has a limit of 225 chars." required></textarea>
+                            <textarea id="textarea" name="seo_description" class="form-control" maxlength="225" rows="3" placeholder="The SEO description content has a limit of 225 chars." required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="image" style="margin-bottom: 0.8rem">Image</label>
-                            <p><i class="typcn typcn-image"></i> Image 1</p>
-                            <input type="file" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
-                            <p><i class="typcn typcn-image"></i> Image 2</p>
-                            <input type="file" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
-                            <p><i class="typcn typcn-image"></i> Image 3</p>
-                            <input type="file" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
-                            <p><i class="typcn typcn-image"></i> Image 4</p>
-                            <input type="file" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
+                            @for($i = 1; $i<=4; $i++)
+                                <p><i class="typcn typcn-image"></i> Image {{$i}}</p>
+                                <input type="file" name="Image[]" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
+                            @endfor
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
-                        <div class="card-box">
-                            <h4 class="m-b-30 m-t-0 header-title">Product Detail Information</h4>
-                            <form method="post">
-                                <textarea id="elm1" name="area"></textarea>
-                            </form>
-                        </div>
+                    <div class="card-box">
+                        <h4 class="m-b-30 m-t-0 header-title">Product Detail Information</h4>
+                        <form method="post">
+                            <textarea id="elm1" name="detail"></textarea>
+                        </form>
                     </div>
+                </div>
                 <button type="submit" class="btn btn-primary waves-effect w-md waves-light">Submit</button>
                 <a href="{{route('proList')}}"><button type="button" class="btn btn-secondary waves-effect w-md waves-light m-l-5">Return</button></a>
             </div>
@@ -145,6 +180,24 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('form').parsley();
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#category').change(function(){
+                var id = $(this).val();
+                $.ajax({
+                    url: 'admincp/load-brand/'+id,
+                    type: "get",
+                    data: {
+                        id: id,
+                    },
+                    success: function(result){
+                        // console.log(result);
+                        $('#brand').html(result);
+                    }
+                });
+            });
         });
     </script>
 @endsection

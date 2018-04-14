@@ -162,7 +162,7 @@
                                 <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Product </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="{{route('proList')}}">Product List</a></li>
-                                    <li><a href="{{route('editPro')}}">Edit Product</a></li>
+                                    <li><a href="{{route('extractFilePro')}}">Extract File</a></li>
                                 </ul>
                             </li>
                             <li>
