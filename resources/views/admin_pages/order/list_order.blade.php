@@ -49,170 +49,50 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Requested By</th>
-                            <th>Subject</th>
-                            <th>Assignee</th>
+                            <th>Customer</th>
+                            <th>Ordered Date</th>
+                            <th>Payment</th>
+                            <th>Note</th>
                             <th>Status</th>
-                            <th>Created Date</th>
-                            <th>Due Date</th>
+                            <th>Taken By</th>
                             <th class="hidden-sm">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $id=1;?>
+                        @foreach($orders as $bill)
                         <tr>
-                            <td><b>#1256</b></td>
+                            <td><b>#{{$id}}</b></td>
+                            <td><span class="m-l-5"><b>{{$bill->fullname}}</b></span></td>
+                            <td>{{\Carbon\Carbon::parse($bill->created_at)->format('jS F Y')}}</td>
+                            <td>{{$bill->payment}}</td>
+                            <td>{{$bill->note}}</td>
                             <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                    <span class="m-l-5"><b>George A. Llanes</b></span>
-                                </a>
+                                @if($bill->status=="Success")<span class="label label-success">{{$bill->status}}</span>
+                                @elseif($bill->status=="Pending")<span class="label label-warning">{{$bill->status}}</span>
+                                @else <span class="label label-danger">{{$bill->status}}</span> @endif
                             </td>
-                            <td>Support for theme</td>
-                            <td>
-                                <a href="javascript: void(0);">
+                            <td id="staff">
+                                @if($bill->first_name)
                                     <img src="admin/assets/images/users/avatar-10.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                </a>
+                                    <span class="m-l-5"><b>{{$bill->first_name}}</b></span>
+                                @else
+                                    <button type="button" class="btn btn-purple waves-effect waves-light btn-sm btnTake" dataId="{{$bill->id}}">Take it</button>
+                                @endif
                             </td>
-                            <td><span class="label label-success">Open</span></td>
-                            <td>2017/04/28</td>
-                            <td>2017/04/28</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <a class="dropdown-item" href="#"><i class=" mdi mdi-information-outline m-r-10 text-muted font-18 vertical-middle"></i>Detail</a>
+                                        <a class="dropdown-item" href="{{route('orderDetail',$bill->id)}}"><i class=" mdi mdi-information-outline m-r-10 text-muted font-18 vertical-middle"></i>Detail</a>
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-pencil m-r-10 text-muted font-18 vertical-middle"></i>Edit</a>
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-delete m-r-10 text-muted font-18 vertical-middle"></i>Remove</a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td><b>#2542</b></td>
-                            <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-3.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                    <span class="m-l-5"><b>Jose D. Delacruz</b></span>
-                                </a>
-                            </td>
-                            <td>
-                                New submission on your website
-                            </td>
-
-                            <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-9.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                </a>
-                            </td>
-
-
-                            <td>
-                                <span class="label label-muted">Closed</span>
-                            </td>
-
-                            <td>
-                                2008/04/25
-                            </td>
-
-                            <td>
-                                2008/04/25
-                            </td>
-
-                            <td>
-                                <div class="btn-group dropdown">
-                                    <a href="javascript: void(0);" class="table-action-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil m-r-10 text-muted font-18 vertical-middle"></i>Edit Ticket</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-check-all m-r-10 text-muted font-18 vertical-middle"></i>Close</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete m-r-10 text-muted font-18 vertical-middle"></i>Remove</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>#320</b></td>
-                            <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-5.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                    <span class="m-l-5"><b>Phyllis K. Maciel</b></span>
-                                </a>
-                            </td>
-
-                            <td>
-                                Verify your new email address!
-                            </td>
-
-                            <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-10.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                </a>
-                            </td>
-
-                            <td>
-                                <span class="label label-success">Open</span>
-                            </td>
-
-                            <td>
-                                2017/04/20
-                            </td>
-
-                            <td>
-                                2017/04/25
-                            </td>
-
-                            <td>
-                                <div class="btn-group dropdown">
-                                    <a href="javascript: void(0);" class="table-action-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil m-r-10 text-muted font-18 vertical-middle"></i>Edit Ticket</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-check-all m-r-10 text-muted font-18 vertical-middle"></i>Close</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete m-r-10 text-muted font-18 vertical-middle"></i>Remove</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>#1254</b></td>
-                            <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-8.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                    <span class="m-l-5"><b>Margeret V. Ligon</b></span>
-                                </a>
-                            </td>
-
-                            <td>
-                                Your application has been received!
-                            </td>
-
-                            <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-10.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                </a>
-                            </td>
-
-                            <td>
-                                <span class="label label-muted">Closed</span>
-                            </td>
-
-                            <td>
-                                01/04/2017
-                            </td>
-
-                            <td>
-                                21/05/2017
-                            </td>
-
-                            <td>
-                                <div class="btn-group dropdown">
-                                    <a href="javascript: void(0);" class="table-action-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil m-r-10 text-muted font-18 vertical-middle"></i>Edit Ticket</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-check-all m-r-10 text-muted font-18 vertical-middle"></i>Close</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete m-r-10 text-muted font-18 vertical-middle"></i>Remove</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php $id++?>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -228,6 +108,24 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#datatable').dataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.btnTake').click(function(){
+                var id = $(this).attr('dataId');
+                $.ajax({
+                    url: 'admincp/take-order/'+id,
+                    type: "get",
+                    data: {
+                        id: id,
+                    },
+                    success: function(result){
+                        // console.log(result);
+                        $('#staff').html(result);
+                    }
+                });
+            });
         });
     </script>
 

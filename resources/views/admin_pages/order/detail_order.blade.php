@@ -2,10 +2,10 @@
 @section('css')
 @endsection
 @section('title')
-    Order Detail
+    {{$order->fullname}}'s order detail
 @endsection
 @section('breadcrumbs')
-    {{Breadcrumbs::render('order_detail')}}
+    {{Breadcrumbs::render('order_detail',$order)}}
 @endsection
 @section('content')
     <div class="row">
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="pull-left m-t-30">
-                            <p><b>Hello, Stanley Jones</b></p>
+                            <p><b>Hello, {{$order->fullname}}</b></p>
                             <p class="text-muted">Thanks a lot because you keep purchasing our products. Our company
                                 promises to provide high quality products for you as well as outstanding
                                 customer service for every transaction. </p>
@@ -30,9 +30,17 @@
                     </div><!-- end col -->
                     <div class="col-4 offset-2">
                         <div class="m-t-30 pull-right">
-                            <p class="m-b-10"><small><strong>Order Date: </strong></small> Jan 17, 2016</p>
-                            <p class="m-b-10"><small><strong>Order Status: </strong></small> <span class="label label-success">Paid</span></p>
-                            <p class="m-b-10"><small><strong>Order ID: </strong></small> #123456</p>
+                            <p class="m-b-10"><small><strong>Order Date: </strong></small>{{\Carbon\Carbon::parse($order->created_at)->format('jS F Y')}}</p>
+                            <p class="m-b-10"><small><strong>Order Status: </strong></small>
+                                @if($order->status=="Success")
+                                    <span class="label label-success">{{$order->status}}</span>
+                                @elseif($order->status=="Pending")
+                                    <span class="label label-warning">{{$order->status}}</span>
+                                @else   
+                                    <span class="label label-danger">{{$order->status}}</span>
+                                @endif
+                            </p>
+                            <p class="m-b-10"><small><strong>Staff: </strong></small>{{$order->first_name}}
                         </div>
                     </div><!-- end col -->
                 </div>
@@ -41,10 +49,10 @@
                         <h5>Billing Address</h5>
 
                         <address class="line-h-24">
-                            Stanley Jones<br>
-                            795 Folsom Ave, Suite 600<br>
-                            San Francisco, CA 94107<br>
-                            <abbr title="Phone">Phone:</abbr> (123) 456-7890
+                            {{$order->fullname}}<br>
+                            Green Market,
+                            795 Folsom Ave, Suite 600, San Francisco<br>
+                            Phone: (123) 456-7890
                         </address>
 
                     </div>
@@ -52,10 +60,9 @@
                         <h5>Shipping Address</h5>
 
                         <address class="line-h-24">
-                            Stanley Jones<br>
-                            795 Folsom Ave, Suite 600<br>
-                            San Francisco, CA 94107<br>
-                            <abbr title="Phone">Phone:</abbr> (123) 456-7890
+                            {{$order->fullname}}<br>
+                            {{$order->address}}<br>
+                            Phone: {{$order->phone}}
                         </address>
 
                     </div>
@@ -72,39 +79,20 @@
                                     <th class="text-right">Total</th>
                                 </tr></thead>
                                 <tbody>
+                                <?php $stt=1;?>
+                                @foreach($detail as $item)
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{$stt}}</td>
                                     <td>
                                         <b>Laptop</b> <br/>
-                                        Brand Model VGN-TXN27N/B
-                                        11.1" Notebook PC
+                                        {{$item->pro_name}}
                                     </td>
-                                    <td>1</td>
-                                    <td>$1799</td>
-                                    <td class="text-right">$1799</td>
+                                    <td>{{$item->quantity}}</td>
+                                    <td>{{number_format($item->price)}} VNĐ</td>
+                                    <td class="text-right">{{number_format($item->quantity*$item->price)}} VNĐ</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <b>Warranty</b> <br/>
-                                        Two Year Extended Warranty -
-                                        Parts and Labor
-                                    </td>
-                                    <td>3</td>
-                                    <td>$499</td>
-                                    <td class="text-right">$1497</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        <b>LED</b> <br/>
-                                        80cm (32) HD Ready LED TV
-                                    </td>
-                                    <td>2</td>
-                                    <td>$412</td>
-                                    <td class="text-right">$824</td>
-                                </tr>
-
+                                <?php $stt++?>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -125,9 +113,10 @@
                     </div>
                     <div class="col-6">
                         <div class="float-right">
-                            <p><b>Sub-total:</b> $4120.00</p>
-                            <p><b>VAT (12.5):</b> $515</p>
-                            <h3>$4635.00 USD</h3>
+                            <p><b>Sub-total:</b> {{number_format($order->total)}} VNĐ</p>
+                            <?php $vat = 0.1*$order->total?>
+                            <p><b>VAT (10%):</b> {{number_format($vat)}} VNĐ</p>
+                            <h3>{{number_format($vat+$order->total)}} VNĐ</h3>
                         </div>
                         <div class="clearfix"></div>
                     </div>

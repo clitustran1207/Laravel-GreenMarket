@@ -24,6 +24,12 @@ Breadcrumbs::register('add_product', function ($breadcrumbs){
     $breadcrumbs->parent('product_list');
     $breadcrumbs->push('Add Product', route('addPro'));
 });
+//Home > Product List > Edit Product
+Breadcrumbs::register('edit_product', function ($breadcrumbs,$product){
+    $breadcrumbs->parent('product_list');
+    $breadcrumbs->push('Edit '.$product->pro_name, route('editPro',$product->id));
+});
+
 //Home > Extract file Product
 Breadcrumbs::register('file-product', function ($breadcrumbs){
     $breadcrumbs->parent('home');
@@ -55,9 +61,9 @@ Breadcrumbs::register('order_list', function ($breadcrumbs){
     $breadcrumbs->push('Order List', route('orderList'));
 });
 //Home > Order List > Order Detail
-Breadcrumbs::register('order_detail', function ($breadcrumbs){
+Breadcrumbs::register('order_detail', function ($breadcrumbs,$order){
     $breadcrumbs->parent('order_list');
-    $breadcrumbs->push('Order Detail', route('orderDetail'));
+    $breadcrumbs->push($order->fullname.' detail', route('orderDetail',$order->id));
 });
 
 ?>

@@ -21,6 +21,7 @@ Route::get('admin-logout',[
     'as'=>'adminLogout'
 ]);
 Route::get('activate/{email}/{activationCode}','ActivationController@activate');
+Route::get('/','HomeController@getIndex')->name('index');
 
 Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
     Route::get('/',[
@@ -37,9 +38,10 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
         'uses' => 'Ad_CategoryController@getCategoryList',
         'as' => 'cateList'
     ]);
-    Route::get('category-data',[
-        'uses' => 'Ad_CategoryController@getData'
-    ]);
+    //Add Cate
+    Route::post('category-list','Ad_CategoryController@postAdd')->name('addCate');
+    //Edit Cate
+    
     //Product List
     Route::get('product-list',[
         'uses' => 'Ad_ProductController@getProductList',
@@ -57,7 +59,17 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
         'uses' => 'Ad_ProductController@postAddProduct',
         'as' => 'addPro'
     ]);
-
+    //Edit Product
+    Route::get('edit-product/{id}',[
+        'uses' => 'Ad_ProductController@getEditProduct',
+        'as' => 'editPro'
+    ]);
+    Route::post('edit-product/{id}',[
+        'uses' => 'Ad_ProductController@postEditProduct',
+        'as' => 'editPro'
+    ]);
+    //Delete Product
+    Route::get('delete-product/{id}','Ad_ProductController@getDeleteProduct')->name('delPro');
     //Extract file Product
     Route::get('file-product',[
         'uses' => 'Ad_ProductController@getExtract',
@@ -84,15 +96,11 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
         'as' => 'editUser' 
     ]);
     //Order List
-    Route::get('order-list',[
-        'uses' => 'Ad_OrderController@getOrderList',
-        'as' => 'orderList' 
-    ]);
+    Route::get('order-list','Ad_OrderController@getOrderList')->name('orderList');
+    //Take Order
+    Route::get('take-order/{id}','Ad_OrderController@takeOrder');
     //Order Detail
-    Route::get('order-detail',[
-        'uses' => 'Ad_OrderController@getOrderDetail',
-        'as' => 'orderDetail' 
-    ]);
+    Route::get('order-detail/{id}','Ad_OrderController@getOrderDetail')->name('orderDetail');
 
 });
 

@@ -25,7 +25,7 @@
                                     <select class="form-control" name="category" id="category" required>
                                         <option value="">--None--</option>
                                         @foreach($category as $cate)
-                                            <option value="{{$cate->id}}">{{$cate->name}}</option>
+                                            <option value="{{$cate->cate_id}}">{{$cate->cate_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -47,15 +47,15 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="price">Price</label>
-                                    <input type="text" placeholder="Enter Price" name="price" data-a-sign="$ " class="form-control autonumber" required>
-                                    <span class="font-14 text-muted">e.g. "$ 1,234,567,890,123"</span>
+                                    <input type="text" placeholder="Enter Price" name="price" data-a-sign="VNĐ " class="form-control autonumber" required>
+                                    <span class="font-14 text-muted">e.g. "VNĐ 1,234,567"</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="promotion_price">Promotion Price</label>
-                                    <input type="text" placeholder="Enter Promotion Price" name="promotion_price" data-a-sign="$ " class="form-control autonumber">
-                                    <span class="font-14 text-muted">e.g. "$ 1,234,567,890,123"</span>
+                                    <input type="text" placeholder="Enter Promotion Price" name="promotion_price" data-a-sign="VNĐ " class="form-control autonumber">
+                                    <span class="font-14 text-muted">e.g. "VNĐ 1,234,567"</span>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             <label for="summary">Summary</label>
                             <textarea id="textarea" name="summary" class="form-control" maxlength="225" rows="3" placeholder="The Summary content has a limit of 225 chars." required></textarea>
                         </div>
-                        <div class="form-group" style="margin: 0">
+                        <div class="form-group">
                             <div class="checkbox checkbox-primary">
                                 <input id="checkbox1" type="checkbox" name="today" value="1">
                                 <label for="checkbox1">Today Deal</label>
@@ -107,10 +107,12 @@
                             <textarea id="textarea" name="seo_description" class="form-control" maxlength="225" rows="3" placeholder="The SEO description content has a limit of 225 chars." required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image" style="margin-bottom: 0.8rem">Image</label>
-                            @for($i = 1; $i<=4; $i++)
-                                <p><i class="typcn typcn-image"></i> Image {{$i}}</p>
-                                <input type="file" name="Image[]" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
+                            <label for="image">Image</label>
+                            <p><i class="typcn typcn-image"></i> Thumbnail</p>
+                            <input type="file" name="thumbnail" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
+                            @for($i = 1; $i<=3; $i++)
+                            <p><i class="typcn typcn-image"></i> Detail {{$i}}</p>
+                            <input type="file" name="Image[]" class="filestyle" data-placeholder="No file" data-buttonname="btn btn-primary">
                             @endfor
                         </div>
                     </div>
