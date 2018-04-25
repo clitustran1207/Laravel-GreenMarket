@@ -22,6 +22,19 @@ Route::get('admin-logout',[
 ]);
 Route::get('activate/{email}/{activationCode}','ActivationController@activate');
 Route::get('/','HomeController@getIndex')->name('index');
+//Product List
+Route::get('product-list/{id}','ProductController@getList')->name('listPro');
+//Product Detail
+Route::get('product-detail/{id}','ProductController@getDetail')->name('proDetail');
+//Add to Cart
+Route::get('add-to-cart/{id}','CartController@getAddToCart')->name('addCart');
+//Delete Cart
+Route::get('delete-cart/{id}','CartController@deleteCart')->name('delCart');
+//Checkout
+Route::get('checkout','CartController@getCheckout')->name('checkout');
+Route::post('checkout','CartController@postCheckout')->name('checkout');
+//Update
+Route::get('update/{id}/{qty}', 'CartController@updateCart');
 
 Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
     Route::get('/',[
@@ -101,6 +114,8 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
     Route::get('take-order/{id}','Ad_OrderController@takeOrder');
     //Order Detail
     Route::get('order-detail/{id}','Ad_OrderController@getOrderDetail')->name('orderDetail');
+    //Edit Order
+    Route::get('edit-order/{id}','Ad_OrderController@getEdit')->name('editOrder');
 
 });
 

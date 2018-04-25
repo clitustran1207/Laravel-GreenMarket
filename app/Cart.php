@@ -67,7 +67,7 @@ class Cart
 	public function update($item, $qty){
 		$giohang = [
 			'qty'=>$qty, //khác với addnew thì update cho phép tùy chỉnh số lượng
-			'price' => $item->promotion_price, 
+			'price' => $item->promotion_price ? $item->promotion_price : $item->price, 
 			'item' => $item
 		];
 		$id = $item->id;
@@ -77,9 +77,9 @@ class Cart
 				$this->totalQty -= $this->items[$id]['qty'];
 			}
 		}
-		$giohang['price'] = $item->promotion_price * $giohang['qty'];
+		$giohang['price'] = ($item->promotion_price ? $item->promotion_price : $item->price) * $giohang['qty'];
 		$this->items[$id] = $giohang;
 		$this->totalQty = $this->totalQty + $qty;
-		$this->totalPrice = $this->totalPrice + ($giohang['item']->promotion_price)*$qty;
+		$this->totalPrice = $this->totalPrice + ($giohang['item']->promotion_price ? $giohang['item']->promotion_price : $giohang['item']->price)*$qty;
 	}
 }

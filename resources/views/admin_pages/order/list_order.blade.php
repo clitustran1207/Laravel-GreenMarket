@@ -85,7 +85,7 @@
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <a class="dropdown-item" href="{{route('orderDetail',$bill->id)}}"><i class=" mdi mdi-information-outline m-r-10 text-muted font-18 vertical-middle"></i>Detail</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil m-r-10 text-muted font-18 vertical-middle"></i>Edit</a>
+                                        <a class="dropdown-item" href="{{route('editOrder',$bill->id)}}"><i class="mdi mdi-pencil m-r-10 text-muted font-18 vertical-middle"></i>Edit</a>
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-delete m-r-10 text-muted font-18 vertical-middle"></i>Remove</a>
                                     </div>
                                 </div>

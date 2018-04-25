@@ -65,5 +65,11 @@ Breadcrumbs::register('order_detail', function ($breadcrumbs,$order){
     $breadcrumbs->parent('order_list');
     $breadcrumbs->push($order->fullname.' detail', route('orderDetail',$order->id));
 });
+//Home > Order List > Edit Order
+Breadcrumbs::register('edit_order', function ($breadcrumbs,$order){
+    $breadcrumbs->parent('order_list');
+    $breadcrumbs->push('Edit '.$order->fullname.' order', route('editOrder',$order->id));
+});
+
 
 ?>

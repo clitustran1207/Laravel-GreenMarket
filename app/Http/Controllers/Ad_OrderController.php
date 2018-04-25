@@ -45,10 +45,19 @@ class Ad_OrderController extends Controller
                     ->where('bill_details.bill_id',$id)
                     ->select('bill_details.*','products.pro_name')
                     ->get();
-        //dd($order);
-        // $datetime = now();
-        // echo $datetime;
-        // echo date_format($datetime, 'g:ia \o\n l jS F Y');
         return view('admin_pages.order.detail_order',compact('order','detail'));
+    }
+    public function getEdit($id){
+        $order = DB::table('bills')            
+                    ->join('customers','customers.id','bills.customer_id')
+                    ->where('bills.id',$id)
+                    ->select('bills.*','customers.*')
+                    ->first();
+        $details = DB::table('bill_details')
+                    ->join('products','bill_details.product_id','products.id')
+                    ->where('bill_details.bill_id',$id)
+                    ->select('bill_details.*','products.pro_name')
+                    ->get();
+        return view('admin_pages.order.edit_order',compact('order','details'));
     }
 }

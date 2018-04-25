@@ -38,8 +38,8 @@
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
-                        <th>Status</th>
-                        <th>Created By</th>
+                        <th>Quantity</th>
+                        <th>Last Updated</th>
                         <th style="width: 115px">Actions</th>
                     </tr>
                     </thead>
@@ -51,19 +51,8 @@
                             <td>{{$pro->pro_name}}</td>
                             <td>{{$pro->cate_name}}</td>
                             <td>{{number_format($pro->price)}} VNĐ</td>
-                            <td>
-                                @if($pro->status == 1)
-                                    <span class="label label-success">Đang kinh doanh</span>
-                                @else
-                                    <span class="label label-danger">Ngừng kinh doanh</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="javascript: void(0);">
-                                    <img src="admin/assets/images/users/avatar-10.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                    <span class="m-l-5"><b>{{$pro->first_name}}</b></span>
-                                </a>
-                            </td>
+                            <td>{{$pro->quantity}}</td>
+                            <td>{{\Carbon\Carbon::parse($pro->updated_at)->format('jS F Y')}}</td>
                             <td>
                                 <button type="button" class="btn btn-icon waves-effect waves-light btn-success" style="width: 12px"> <i class="fa fa-info"></i> </button>
                                 <a href="{{route('editPro',$pro->id)}}"><button type="button" class="btn btn-icon waves-effect waves-light btn-warning"><i class="fa fa-pencil"></i></button></a>

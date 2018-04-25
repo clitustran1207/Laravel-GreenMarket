@@ -20,7 +20,7 @@ class Ad_ProductController extends Controller
                     ->join('categories','categories.cate_id','=','sub_categories.parent_id')
                     ->join('users','users.id','=','products.user_id')
                     ->select('products.*','categories.cate_name','users.first_name')
-                    ->orderBy('categories.cate_name')
+                    ->orderBy('products.updated_at','DESC')
                     ->get();
         return view('admin_pages.product.list_pro', compact('products'));
     }
