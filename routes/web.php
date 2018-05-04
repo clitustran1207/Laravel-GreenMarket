@@ -21,6 +21,10 @@ Route::get('admin-logout',[
     'as'=>'adminLogout'
 ]);
 Route::get('activate/{email}/{activationCode}','ActivationController@activate');
+
+Route::get('404',['as'=>'404','uses'=>'ErrorHandlerController@errorCode404']);
+Route::get('405',['as'=>'405','uses'=>'ErrorHandlerController@errorCode405']);
+
 Route::get('/','HomeController@getIndex')->name('index');
 //Product List
 Route::get('product-list/{id}','ProductController@getList')->name('listPro');
@@ -41,6 +45,7 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
         'uses' => 'Ad_HomeController@getAdminIndex',
         'as' => 'home'
     ]);
+    Route::post('/','Ad_HomeController@postDate')->name('post');
     //Extract file Category
     Route::get('file-category',[
         'uses' => 'Ad_CategoryController@getExtract',
@@ -116,6 +121,7 @@ Route::group(['prefix'=>'admincp','middleware'=>'adminLogin'], function(){
     Route::get('order-detail/{id}','Ad_OrderController@getOrderDetail')->name('orderDetail');
     //Edit Order
     Route::get('edit-order/{id}','Ad_OrderController@getEdit')->name('editOrder');
+    Route::post('edit-order/{id}','Ad_OrderController@postEdit')->name('editOrder');
 
 });
 

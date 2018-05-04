@@ -21,25 +21,25 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-3">
                             <div class="m-t-20 m-b-20">
-                                <h3 class="m-b-10 text-custom">25563</h3>
+                                <h3 class="m-b-10 text-custom">{{$total}}</h3>
                                 <p class="text-uppercase m-b-5 font-13 font-600">Total Orders</p>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3">
                             <div class="m-t-20 m-b-20">
-                                <h3 class="m-b-10 text-warning">6952</h3>
+                                <h3 class="m-b-10 text-warning">{{$pending}}</h3>
                                 <p class="text-uppercase m-b-5 font-13 font-600">Pending Orders</p>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3">
                             <div class="m-t-20 m-b-20">
-                                <h3 class="m-b-10 text-success">18361</h3>
+                                <h3 class="m-b-10 text-success">{{$success}}</h3>
                                 <p class="text-uppercase m-b-5 font-13 font-600">Succeed Orders</p>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3">
                             <div class="m-t-20 m-b-20">
-                                <h3 class="m-b-10 text-danger">250</h3>
+                                <h3 class="m-b-10 text-danger">{{$cancel}}</h3>
                                 <p class="text-uppercase m-b-5 font-13 font-600">Cancel Orders</p>
                             </div>
                         </div>
@@ -64,15 +64,15 @@
                         <tr>
                             <td><b>#{{$id}}</b></td>
                             <td><span class="m-l-5"><b>{{$bill->fullname}}</b></span></td>
-                            <td>{{\Carbon\Carbon::parse($bill->created_at)->format('jS F Y')}}</td>
-                            <td>{{$bill->payment}}</td>
+                            <td>{{\Carbon\Carbon::parse($bill->order_created_at)->format('jS F Y')}}</td>
+                            <td>{{ucfirst($bill->payment)}}</td>
                             <td>{{$bill->note}}</td>
                             <td>
                                 @if($bill->status=="Success")<span class="label label-success">{{$bill->status}}</span>
                                 @elseif($bill->status=="Pending")<span class="label label-warning">{{$bill->status}}</span>
                                 @else <span class="label label-danger">{{$bill->status}}</span> @endif
                             </td>
-                            <td id="staff">
+                            <td id="staff-{{$bill->id}}">
                                 @if($bill->first_name)
                                     <img src="admin/assets/images/users/avatar-10.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
                                     <span class="m-l-5"><b>{{$bill->first_name}}</b></span>
@@ -122,7 +122,7 @@
                     },
                     success: function(result){
                         // console.log(result);
-                        $('#staff').html(result);
+                        $('#staff-'+id).html(result);
                     }
                 });
             });

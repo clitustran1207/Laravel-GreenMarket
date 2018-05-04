@@ -70,6 +70,7 @@ class CartController extends Controller
         $bill->payment = null;
         $bill->status = "Pending";
         $bill->note = $req->note;
+        $bill->order_created_at = date_format(now(),"Y-m-d H:i:s");
         $bill->save();
 
         foreach($cart->items as $key => $value){

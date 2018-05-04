@@ -162,6 +162,11 @@
             $('.autonumber').autoNumeric('init');
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('form').parsley();
+        });
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -187,11 +192,6 @@
                     ]
                 });
             }
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('form').parsley();
         });
     </script>
     <script>

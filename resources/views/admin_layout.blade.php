@@ -183,8 +183,6 @@
                                 <a href="javascript: void(0);"><i class="fi-mail"></i><span> Order </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="{{route('orderList')}}">Order List</a></li>
-                                    <li><a href="email-read.html">Read Email</a></li>
-                                    <li><a href="email-compose.html">Compose Email</a></li>
                                 </ul>
                             </li>
 
